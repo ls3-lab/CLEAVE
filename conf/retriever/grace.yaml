@@ -1,0 +1,57 @@
+# GCA (Graph Contrastive Learning with Adaptive Augmentation) retriever configuration
+name: grace
+hidden_dim: 256
+num_proj_hidden: 256
+num_layers: 2
+activation: prelu
+tau: 0.4
+learning_rate: 0.001
+weight_decay: 1e-5
+epochs: 200
+drop_edge_rate_1: 0.2
+drop_edge_rate_2: 0.3
+drop_feature_rate_1: 0.1
+drop_feature_rate_2: 0.1
+base_model: GCNConv
+drop_scheme: degree
+
+attack_model_path:
+  Cora:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/grace/Cora/pgrace_gcn_attack.pth
+  CiteSeer:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/grace/CiteSeer/pgrace_gcn_attack.pth
+  CoraFull:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/grace/CoraFull/pgrace_gcn_attack.pth
+  DBLP:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/grace/DBLP/pgrace_gcn_attack.pth
+  Coauthor-Physics:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/grace/Coauthor-Physics/pgrace_gcn_attack.pth
+  Coauthor-CS:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/grace/Coauthor-CS/pgrace_gcn_attack.pth
+  PubMed:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/grace/PubMed/pgrace_gcn_attack.pth
+  Amazon-Photo:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/grace/Amazon-Photo/pgrace_gcn_attack.pth
+  Amazon-Computers:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/grace/Amazon-Computers/pgrace_gcn_attack.pth
+
+
+oracle_model_path:
+  Cora:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/grace/Cora/pgrace_gcn.pth
+  CiteSeer:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/grace/CiteSeer/pgrace_gcn.pth
+  CoraFull:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/grace/CoraFull/pgrace_gcn.pth
+  DBLP:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/grace/DBLP/pgrace_gcn.pth
+  Coauthor-Physics:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/grace/Coauthor-Physics/pgrace_gcn.pth
+  Coauthor-CS:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/grace/Coauthor-CS/pgrace_gcn.pth
+  PubMed:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/grace/PubMed/pgrace_gcn.pth
+  Amazon-Photo:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/grace/Amazon-Photo/pgrace_gcn.pth
+  Amazon-Computers:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/grace/Amazon-Computers/pgrace_gcn.pth

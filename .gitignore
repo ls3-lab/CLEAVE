@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.DS_Store
+
+# Hydra run outputs
+output/
+output_*/
+outputs/
+multirun/
+.hydra/
+*.log
+
+# Regenerable / heavy artifacts
+# Retriever checkpoints are retrained from src/retrievers (see REPRODUCIBILITY.md), not shipped.
+cache/checkpoints/
+cache/datasets/
+data/
+
+# Local editor / env
+.vscode/
+.idea/
+.env

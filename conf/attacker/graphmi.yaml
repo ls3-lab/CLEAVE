@@ -1,0 +1,24 @@
+# GraphMI using the shared retriever-embedding surrogate
+name: graphmi
+type: adversarial
+description: "GraphMI (white-box model inversion) — distills the VICTIM, reported separately from the transfer baselines"
+trials: 5
+
+# GraphMI is white-box by its own paper (it inverts the target model); it therefore distills the VICTIM
+# retriever rather than the surrogate. Reported as a white-box reference, NOT head-to-head with the
+# surrogate-transfer baselines. All other gradient attackers default to the surrogate (use_victim_retriever:false).
+use_victim_retriever: true
+
+inversion_epochs: 100
+learning_rate: 0.5
+alpha: 0.005
+beta: 0.0001
+emb_loss_type: cosine
+
+nhid: 128
+surrogate_epochs: 200
+surrogate_lr: 0.01
+surrogate_weight_decay: 0.0005
+surrogate_patience: 30
+
+use_autoencoder: false

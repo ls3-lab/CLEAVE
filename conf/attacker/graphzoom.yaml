@@ -1,0 +1,22 @@
+# GraphZOOM (Tang et al., Complex & Intelligent Systems 2026)
+# Adapted for retrieval — zeroth-order edge importance scoring
+name: graphzoom
+type: adversarial
+description: "GraphZOOM adapted for retrieval — zeroth-order edge importance scoring"
+trials: 1   # deterministic under the default config (use_zoo_refinement=false); set >1 only if ZOO refinement is enabled
+
+# Phase 1: Max/min feature probing (Eq. 3 adaptation)
+# neighbor_embedding | target_embedding | all_embedding
+objective_type: neighbor_embedding
+
+# Phase 2: ZOO refinement (optional)
+use_zoo_refinement: false
+top_k_refine: 10
+step_size_h: 0.0001
+n_coords: 20
+
+# ZOO ADAM parameters
+zoo_lr: 0.01
+zoo_itermax: 50
+zoo_beta1: 0.9
+zoo_beta2: 0.999

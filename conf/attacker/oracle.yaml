@@ -1,0 +1,6 @@
+name: oracle
+type: baseline
+description: "Oracle: synergy-aware optimal incident-edge set per budget (exhaustive over top-K incident edges)"
+trials: 1
+oracle_topk: 15        # top-K incident edges (by single-edge impact) searched exhaustively per budget
+oracle_cache_path: null

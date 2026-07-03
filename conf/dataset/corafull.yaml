@@ -1,0 +1,12 @@
+# CoraFull dataset configuration
+name: CoraFull
+num_classes: 70
+num_features: 8710
+split_ratio:
+  train: 0.6
+  val: 0.2
+  test: 0.2
+
+# Oracle/query finalization (see plan oracle-query-finalization)
+query_radius: 2hop      # centroid query neighborhood: 1hop | 2hop | blend
+brute_cutoff: 50        # oracle: deg<=cutoff -> exhaustive over all incident edges, else beam

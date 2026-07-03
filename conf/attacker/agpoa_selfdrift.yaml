@@ -1,0 +1,20 @@
+# AGPOA, retriever-embedding surrogate — SELF-DRIFT (query-free) ablation of Tier-1 agpoa.
+# Drifts the target from its OWN clean embedding instead of the centroid query.
+name: agpoa_selfdrift
+type: adversarial
+description: "AGPOA self-drift: surrogate embedding drift from the target's own clean embedding (no query)"
+momentum_factor: 0.6
+budget_alpha: 1.0
+num_gradient_modifications: 1000
+top_k: 50
+trials: 5
+
+drift_reference: self
+embedding_loss_type: cosine
+surrogate_hidden: 256
+surrogate_epochs: 200
+surrogate_lr: 0.01
+surrogate_weight_decay: 0.0005
+surrogate_dropout: 0.0
+surrogate_loss_type: cosine
+surrogate_patience: 30

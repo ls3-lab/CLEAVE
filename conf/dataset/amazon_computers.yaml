@@ -1,0 +1,12 @@
+# Amazon Computers dataset configuration
+name: Amazon-Computers
+num_classes: 10
+num_features: 767
+split_ratio:
+  train: 0.6
+  val: 0.2
+  test: 0.2
+
+# Oracle/query finalization (see plan oracle-query-finalization)
+query_radius: blend     # centroid query neighborhood: 1hop | 2hop | blend
+brute_cutoff: 40        # oracle: deg<=cutoff -> exhaustive over all incident edges, else beam

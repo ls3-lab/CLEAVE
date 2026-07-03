@@ -1,0 +1,13 @@
+# InfAttack — Known-Labels (KL) variant. Faithful to Wang et al. (WSDM 2024),
+# "restricted black-box" attack via influence function. The LR feature surrogate is trained on the
+# attack-split TRAIN ids only (disjoint from test targets → no leakage); KL uses ground-truth
+# target/neighbor labels (the paper's "known labels" setting).
+name: infattack_kl
+type: baseline
+description: "InfAttack (Wang et al., WSDM 2024) — influence-function edge removal, Known-Labels (ground-truth)"
+base_path: ${general.cache_dir}/trained_models
+trials: 1   # deterministic (greedy influence-function order); extra trials give identical results
+K: 2
+attack_mode: one-time  # Options: 'one-time' or 'iterative'
+label_mode: kl         # 'kl' = ground-truth labels (known); 'ul' = surrogate-predicted labels
+use_surrogate: true

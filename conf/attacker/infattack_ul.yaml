@@ -1,0 +1,14 @@
+# InfAttack — Unknown-Labels (UL) variant. Faithful to Wang et al. (WSDM 2024),
+# "restricted black-box" attack via influence function. The LR feature surrogate is trained on the
+# attack-split TRAIN ids only (disjoint from test targets → no leakage); UL uses the surrogate's
+# PREDICTED labels for targets/neighbors (the paper's "unknown labels" setting — no ground-truth
+# access for the attacked nodes, matching the label-free budget of the other baselines).
+name: infattack_ul
+type: baseline
+description: "InfAttack (Wang et al., WSDM 2024) — influence-function edge removal, Unknown-Labels (predicted)"
+base_path: ${general.cache_dir}/trained_models
+trials: 1   # deterministic (greedy influence-function order); extra trials give identical results
+K: 2
+attack_mode: one-time  # Options: 'one-time' or 'iterative'
+label_mode: ul         # 'kl' = ground-truth labels (known); 'ul' = surrogate-predicted labels
+use_surrogate: true

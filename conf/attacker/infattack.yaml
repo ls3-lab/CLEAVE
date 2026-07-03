@@ -1,0 +1,9 @@
+# InfAttack baseline configuration
+name: infattack
+type: baseline
+description: "Influence Function-based attack selects edges to remove using influence functions"
+base_path: ${general.cache_dir}/trained_models
+trials: 1   # deterministic (greedy influence-function order); extra trials give identical results
+K: 2
+attack_mode: one-time  # Options: 'one-time' or 'iterative'
+use_surrogate: true

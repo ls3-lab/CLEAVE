@@ -1,0 +1,17 @@
+# Nettack-inspired greedy, retriever-embedding surrogate — SELF-DRIFT (query-free) ablation of Tier-1 nettack.
+# Scores removals by drift of the target from its OWN clean embedding instead of the centroid query.
+name: nettack_selfdrift
+type: adversarial
+description: "Nettack self-drift: greedy edge removal scored by drift from the target's own clean embedding (no query)"
+trials: 5
+
+drift_reference: self
+embedding_loss_type: cosine
+greedy_recompute: true
+surrogate_hidden: 256
+surrogate_epochs: 200
+surrogate_lr: 0.01
+surrogate_weight_decay: 0.0005
+surrogate_dropout: 0.0
+surrogate_loss_type: cosine
+surrogate_patience: 30

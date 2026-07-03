@@ -1,0 +1,15 @@
+defaults:
+  - dataset: amazon_photo
+  - retriever: epagcl
+  - attacker@attackers.1: cleave
+  - _self_
+general:
+  seed: 42
+  device: cuda
+  budget: 5
+  graph_model: gcn
+  output_dir: ${hydra:runtime.cwd}/output_cleave
+  cache_dir: ${hydra:runtime.cwd}/cache
+hydra:
+  run:
+    dir: ${general.output_dir}/${now:%Y-%m-%d}/${now:%H-%M-%S}

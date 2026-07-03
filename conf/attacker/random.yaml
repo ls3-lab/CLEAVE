@@ -1,0 +1,6 @@
+# Random attack baseline configuration
+name: random
+type: baseline
+description: "Randomly selects edges to remove"
+base_path: ${general.cache_dir}/trained_models
+trials: 5

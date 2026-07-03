@@ -1,0 +1,33 @@
+# Main Hydra configuration file
+defaults:
+  - dataset: citeseer  # amazon_photo, amazon_computers, citeseer, coauthor_physics, coauthor_cs, pubmed, corafull, dblp, cora
+  - retriever: epagcl     # epagcl, gca, grace
+  - attacker@attackers.1: cleave        # proposed method (CLEAVE)
+  - attacker@attackers.2: degree
+  - attacker@attackers.3: pagerank
+  - attacker@attackers.4: random
+  - attacker@attackers.5: infmax
+  - attacker@attackers.6: viking
+  - attacker@attackers.7: rlp
+  - attacker@attackers.8: infattack_kl
+  - attacker@attackers.9: graphmi
+  - attacker@attackers.10: graphzoom
+  - attacker@attackers.11: agpoa_querydrift
+  - attacker@attackers.12: nettack_querydrift
+  - attacker@attackers.13: nag_r_querydrift
+  - _self_
+
+general:
+  seed: 42
+  device: cuda
+  budget: 5
+  graph_model: gcn
+  output_dir: ${hydra:runtime.cwd}/output
+  cache_dir: ${hydra:runtime.cwd}/cache
+
+hydra:
+  run:
+    dir: ${general.output_dir}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  sweep:
+    dir: ${general.output_dir}/multirun/baseline_5runs_${retriever.name}
+    subdir: ${hydra.job.num}

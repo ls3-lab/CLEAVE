@@ -1,0 +1,11 @@
+# InfAttack baseline configuration
+name: infmax
+type: baseline
+description: "Influence Maximization-based attack selects edges to remove using random walk influence"
+base_path: ${general.cache_dir}/trained_models
+trials: 1   # deterministic selection; extra trials give identical results
+steps: 4  # Number of random walk steps (K)
+alpha: 0.01  # Threshold for uniform method
+sigma: 0.01  # Sigma for erf method
+method: unif  # InfMax-Unif ('unif'/'uniform'), InfMax-Norm ('norm'/'erf'), or 'sum' (RWCS)
+use_test_mask: true  # Sum influence over test receivers (matches New_sort_sumtest)

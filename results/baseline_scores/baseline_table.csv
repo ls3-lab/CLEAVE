@@ -1,0 +1,165 @@
+,,EPAGCL,,,,,,,GCA,,,,,,,GRACE,,,,
+,,Budget,,,,,,,Budget,,,,,,,Budget,,,,
+Dataset,Method,1,2,3,4,5,Dataset,Method,1,2,3,4,5,Dataset,Method,1,2,3,4,5
+Cora,oracle,11.98,16.9,22.52,31.94,36.83,Cora,oracle,10.32,17.57,27.17,37.5,43.67,Cora,oracle,14.89,26.55,43.57,74.59,90.98
+Cora,degree,11.94,18.33,21.71,30.35,34.46,Cora,degree,9.22,12.53,16.75,19.07,18.05,Cora,degree,15.05,23.23,38.09,57.39,78.7
+Cora,pagerank,9.75,15.26,17.46,25.68,33.17,Cora,pagerank,6.59,9.18,11.51,14.59,18.28,Cora,pagerank,12.19,20.21,33.56,51.69,76.07
+Cora,infattack_kl,3.9,6.39,12.11,19.92,26.29,Cora,infattack_kl,2.5,5.27,13.81,16.31,18.28,Cora,infattack_kl,5.32,13.83,28.44,43.43,54.05
+Cora,infattack_ul,2.34,4.86,7.57,11.09,13.21,Cora,infattack_ul,2.06,3.53,7.44,8.19,9.45,Cora,infattack_ul,3.34,6.9,12.43,20.97,24.0
+Cora,infmax,11.46,16.73,23.69,28.34,32.84,Cora,infmax,9.07,11.55,12.94,15.95,17.31,Cora,infmax,14.61,21.81,28.67,53.91,74.95
+Cora,rlp,1.54,2.54,4.35,20.4,28.39,Cora,rlp,2.11,3.72,4.06,10.55,15.46,Cora,rlp,3.89,8.58,14.82,45.64,69.81
+Cora,random,1.56,3.32,11.38,20.11,28.47,Cora,random,0.57,2.26,7.36,12.97,15.75,Cora,random,2.91,7.1,19.95,47.58,70.72
+Cora,viking,0.22,1.04,7.41,23.95,32.38,Cora,viking,0.27,-0.3,4.57,12.31,18.36,Cora,viking,3.44,8.46,19.81,63.47,82.94
+Cora,graphmi,0.94,2.15,3.64,22.03,30.06,Cora,graphmi,0.9,2.02,2.9,18.68,15.12,Cora,graphmi,2.35,7.4,15.49,60.06,72.57
+Cora,graphzoom,-3.2,3.52,6.94,20.09,28.94,Cora,graphzoom,-0.81,3.83,3.95,10.34,16.12,Cora,graphzoom,-0.26,5.79,18.74,47.91,72.61
+Cora,agpoa (query-drift),11.77,18.81,21.93,29.91,35.67,Cora,agpoa (query-drift),9.76,15.73,22.13,28.51,23.34,Cora,agpoa (query-drift),15.18,25.41,39.17,70.25,85.95
+Cora,agpoa (self-drift),2.04,3.0,4.16,21.16,28.57,Cora,agpoa (self-drift),2.03,3.94,8.42,18.89,19.03,Cora,agpoa (self-drift),5.4,7.79,20.84,59.17,74.44
+Cora,nettack (query-drift),11.68,18.58,23.59,32.74,37.28,Cora,nettack (query-drift),9.86,15.56,22.45,28.73,24.31,Cora,nettack (query-drift),14.11,24.42,41.24,72.41,86.69
+Cora,nettack (self-drift),-2.94,-4.08,-3.9,18.74,27.56,Cora,nettack (self-drift),-0.3,0.83,5.08,13.57,19.29,Cora,nettack (self-drift),-0.53,1.76,8.75,43.9,69.91
+Cora,nag_r (query-drift),11.85,18.23,22.61,28.25,31.14,Cora,nag_r (query-drift),9.82,15.87,19.98,22.94,23.07,Cora,nag_r (query-drift),15.2,24.58,35.71,55.62,65.7
+Cora,nag_r (self-drift),2.8,3.7,4.56,10.43,14.2,Cora,nag_r (self-drift),0.66,1.02,0.15,1.36,3.69,Cora,nag_r (self-drift),2.7,4.8,10.93,22.13,33.44
+,,,,,,,,,,,,,,,,,,,,
+CiteSeer,oracle,5.87,11.1,17.06,21.3,25.15,CiteSeer,oracle,2.62,5.5,7.55,8.63,9.01,CiteSeer,oracle,9.15,15.67,22.42,26.75,28.54
+CiteSeer,degree,5.51,10.47,16.62,20.79,24.13,CiteSeer,degree,2.5,4.2,6.42,7.17,7.51,CiteSeer,degree,8.5,13.24,18.69,23.61,26.01
+CiteSeer,pagerank,2.94,6.35,13.87,19.25,21.9,CiteSeer,pagerank,1.32,3.9,4.32,5.63,6.04,CiteSeer,pagerank,3.64,5.92,15.03,21.64,23.65
+CiteSeer,infattack_kl,-0.6,2.97,9.06,12.53,14.25,CiteSeer,infattack_kl,0.1,1.48,3.17,3.13,3.51,CiteSeer,infattack_kl,-0.84,2.9,9.17,11.47,13.17
+CiteSeer,infattack_ul,-1.51,1.85,8.17,11.7,14.22,CiteSeer,infattack_ul,-0.84,0.31,2.71,3.39,4.19,CiteSeer,infattack_ul,-1.62,1.55,9.13,11.32,14.53
+CiteSeer,infmax,5.06,10.52,16.52,21.02,23.7,CiteSeer,infmax,2.13,4.2,5.77,7.04,6.9,CiteSeer,infmax,7.97,14.01,18.29,24.1,25.61
+CiteSeer,rlp,2.08,4.56,12.44,17.5,19.66,CiteSeer,rlp,1.33,2.69,4.85,7.31,6.9,CiteSeer,rlp,3.34,6.76,13.81,20.11,21.6
+CiteSeer,random,1.02,3.39,10.13,15.92,19.14,CiteSeer,random,0.56,1.72,4.16,5.08,6.63,CiteSeer,random,1.59,4.2,11.4,17.91,21.34
+CiteSeer,viking,0.08,4.51,12.08,15.64,18.39,CiteSeer,viking,0.54,1.92,3.54,5.01,6.77,CiteSeer,viking,0.07,5.87,12.98,19.11,21.36
+CiteSeer,graphmi,0.58,2.98,11.39,15.63,19.16,CiteSeer,graphmi,0.43,2.33,3.51,5.75,6.68,CiteSeer,graphmi,0.55,5.22,12.67,19.92,21.81
+CiteSeer,graphzoom,-1.58,0.37,8.92,14.7,17.57,CiteSeer,graphzoom,0.24,1.23,4.37,6.97,6.43,CiteSeer,graphzoom,-1.32,0.48,8.11,15.5,17.86
+CiteSeer,agpoa (query-drift),5.81,10.79,16.91,20.77,23.13,CiteSeer,agpoa (query-drift),2.63,5.21,6.94,7.96,9.34,CiteSeer,agpoa (query-drift),9.09,14.99,20.51,25.31,25.54
+CiteSeer,agpoa (self-drift),0.48,2.48,9.83,15.07,17.33,CiteSeer,agpoa (self-drift),0.44,1.04,3.58,5.12,6.46,CiteSeer,agpoa (self-drift),1.13,3.01,11.45,16.58,19.15
+CiteSeer,nettack (query-drift),5.79,10.82,16.53,21.68,23.9,CiteSeer,nettack (query-drift),2.49,5.67,7.16,7.45,8.19,CiteSeer,nettack (query-drift),8.94,15.22,21.24,25.64,26.67
+CiteSeer,nettack (self-drift),0.46,2.71,11.89,18.02,20.89,CiteSeer,nettack (self-drift),1.11,2.63,5.25,6.44,7.43,CiteSeer,nettack (self-drift),1.16,4.65,12.52,18.29,21.62
+CiteSeer,nag_r (query-drift),5.74,10.54,15.19,18.83,20.71,CiteSeer,nag_r (query-drift),2.63,5.38,6.32,6.66,6.79,CiteSeer,nag_r (query-drift),8.95,14.87,20.64,24.99,26.06
+CiteSeer,nag_r (self-drift),0.44,1.12,4.14,8.53,9.86,CiteSeer,nag_r (self-drift),0.38,0.4,2.23,3.54,3.82,CiteSeer,nag_r (self-drift),1.03,2.04,6.0,9.79,11.38
+,,,,,,,,,,,,,,,,,,,,
+PubMed,oracle,7.11,21.73,48.89,97.18,177.54,PubMed,oracle,35.72,67.6,103.44,139.27,196.53,PubMed,oracle,14.29,34.08,62.98,103.21,158.09
+PubMed,degree,3.91,11.55,24.89,53.32,121.66,PubMed,degree,4.75,15.26,28.24,37.22,59.89,PubMed,degree,0.75,5.3,13.78,28.43,62.87
+PubMed,pagerank,3.27,9.32,20.11,45.2,115.62,PubMed,pagerank,4.67,8.85,16.18,31.98,53.96,PubMed,pagerank,0.07,3.26,11.39,28.17,59.18
+PubMed,infattack_kl,1.51,5.54,14.4,34.08,80.07,PubMed,infattack_kl,7.12,18.18,27.53,39.99,50.13,PubMed,infattack_kl,-1.28,5.06,11.08,24.73,47.07
+PubMed,infattack_ul,1.61,6.09,14.88,35.13,84.99,PubMed,infattack_ul,12.36,22.29,35.22,52.55,66.62,PubMed,infattack_ul,-0.17,7.36,13.9,30.12,55.42
+PubMed,infmax,3.99,10.93,23.96,53.98,117.47,PubMed,infmax,5.83,12.46,25.11,37.82,56.66,PubMed,infmax,0.8,4.38,12.55,29.78,58.6
+PubMed,rlp,2.18,6.05,12.24,30.51,92.93,PubMed,rlp,-1.81,-0.68,1.84,11.23,37.02,PubMed,rlp,-0.16,2.4,7.06,16.89,47.67
+PubMed,random,1.87,5.13,12.16,29.0,91.68,PubMed,random,4.92,10.02,15.22,24.61,45.09,PubMed,random,2.21,4.24,9.4,20.97,52.24
+PubMed,viking,1.83,6.64,13.42,31.84,105.92,PubMed,viking,2.7,7.2,16.24,26.53,42.0,PubMed,viking,0.08,5.95,9.91,24.16,55.23
+PubMed,graphmi,0.61,2.47,8.61,22.75,92.37,PubMed,graphmi,6.64,13.87,25.29,41.39,65.88,PubMed,graphmi,1.2,2.64,8.84,23.74,56.8
+PubMed,graphzoom,0.08,2.02,7.49,24.47,92.82,PubMed,graphzoom,-3.51,2.91,1.43,9.17,32.93,PubMed,graphzoom,-1.1,2.11,3.86,16.77,50.5
+PubMed,agpoa (query-drift),5.27,15.2,32.67,63.95,133.93,PubMed,agpoa (query-drift),9.52,19.33,38.08,53.73,82.16,PubMed,agpoa (query-drift),4.22,12.69,24.05,44.38,91.12
+PubMed,agpoa (self-drift),1.25,6.53,18.69,45.43,110.03,PubMed,agpoa (self-drift),2.4,12.24,24.09,43.71,70.04,PubMed,agpoa (self-drift),0.68,6.5,18.6,39.05,80.98
+PubMed,nettack (query-drift),6.63,18.8,42.78,83.7,160.56,PubMed,nettack (query-drift),12.26,29.02,53.4,74.01,106.13,PubMed,nettack (query-drift),7.01,19.42,38.02,63.11,107.09
+PubMed,nettack (self-drift),0.46,6.44,19.93,45.96,112.18,PubMed,nettack (self-drift),3.03,10.32,20.57,37.48,69.32,PubMed,nettack (self-drift),0.15,5.31,15.45,33.98,70.95
+PubMed,nag_r (query-drift),5.53,15.41,32.33,49.91,62.19,PubMed,nag_r (query-drift),10.29,22.33,45.4,63.05,80.91,PubMed,nag_r (query-drift),6.23,16.68,31.86,44.35,54.24
+PubMed,nag_r (self-drift),1.06,4.68,12.27,22.95,33.28,PubMed,nag_r (self-drift),3.66,10.87,13.95,24.86,31.28,PubMed,nag_r (self-drift),0.95,4.81,9.39,18.26,25.69
+,,,,,,,,,,,,,,,,,,,,
+DBLP,oracle,2.58,7.14,16.08,31.92,63.38,DBLP,oracle,3.46,8.32,16.58,27.69,54.52,DBLP,oracle,3.17,8.65,19.3,37.37,69.69
+DBLP,degree,2.21,5.76,11.54,21.86,47.12,DBLP,degree,3.01,7.45,11.95,17.92,28.28,DBLP,degree,2.62,6.78,13.13,23.82,47.11
+DBLP,pagerank,1.66,3.8,8.36,16.28,38.11,DBLP,pagerank,1.86,3.93,8.02,14.03,25.04,DBLP,pagerank,2.14,4.45,9.17,17.99,41.25
+DBLP,infattack_kl,0.11,0.82,3.06,8.2,22.45,DBLP,infattack_kl,0.19,1.84,4.61,10.68,19.76,DBLP,infattack_kl,-0.46,0.23,3.1,9.51,25.04
+DBLP,infattack_ul,0.32,1.06,3.08,7.55,18.11,DBLP,infattack_ul,0.55,2.16,4.24,10.1,17.53,DBLP,infattack_ul,-0.15,0.38,2.31,6.24,16.26
+DBLP,infmax,2.21,5.5,10.86,19.94,44.05,DBLP,infmax,2.93,6.8,11.06,15.62,23.56,DBLP,infmax,2.61,6.39,11.94,20.32,39.24
+DBLP,rlp,0.61,1.91,4.16,8.99,20.66,DBLP,rlp,0.45,1.7,3.42,6.62,13.1,DBLP,rlp,-0.06,1.01,3.32,8.03,19.55
+DBLP,random,0.71,1.93,3.83,8.25,21.2,DBLP,random,0.86,2.13,3.72,6.53,16.29,DBLP,random,0.54,2.05,3.82,8.29,20.88
+DBLP,viking,1.66,4.12,8.02,16.36,39.35,DBLP,viking,1.49,4.28,7.5,12.36,23.5,DBLP,viking,1.35,4.4,9.99,20.37,36.26
+DBLP,graphmi,1.09,3.25,6.99,14.52,34.83,DBLP,graphmi,0.65,2.7,5.93,10.6,19.24,DBLP,graphmi,1.04,2.67,6.47,15.02,38.38
+DBLP,graphzoom,-0.29,0.8,2.46,6.05,16.65,DBLP,graphzoom,0.82,2.88,5.25,9.69,18.47,DBLP,graphzoom,-1.53,-0.55,2.4,6.47,21.94
+DBLP,agpoa (query-drift),2.46,6.71,14.77,27.84,54.62,DBLP,agpoa (query-drift),3.78,9.49,17.58,27.46,40.49,DBLP,agpoa (query-drift),2.88,7.9,17.54,33.1,62.53
+DBLP,agpoa (self-drift),0.32,1.8,5.31,12.25,28.87,DBLP,agpoa (self-drift),0.29,2.52,6.24,13.57,27.91,DBLP,agpoa (self-drift),-0.16,1.52,5.89,15.45,36.44
+DBLP,nettack (query-drift),2.36,6.46,14.1,28.02,53.67,DBLP,nettack (query-drift),3.94,9.52,17.33,28.88,46.58,DBLP,nettack (query-drift),2.72,7.39,16.53,31.83,61.46
+DBLP,nettack (self-drift),0.07,1.58,4.26,9.61,22.57,DBLP,nettack (self-drift),-0.47,0.58,3.82,9.64,27.0,DBLP,nettack (self-drift),-0.16,1.06,3.91,9.86,26.85
+DBLP,nag_r (query-drift),2.44,6.14,9.81,13.83,28.84,DBLP,nag_r (query-drift),3.79,8.68,10.95,14.53,21.74,DBLP,nag_r (query-drift),2.81,7.22,11.09,14.76,30.43
+DBLP,nag_r (self-drift),0.05,0.87,2.9,7.27,14.6,DBLP,nag_r (self-drift),0.44,0.84,1.88,5.28,10.85,DBLP,nag_r (self-drift),-0.29,0.64,2.66,6.46,14.08
+,,,,,,,,,,,,,,,,,,,,
+CoraFull,oracle,28.33,52.29,77.18,105.02,141.87,CoraFull,oracle,31.38,56.9,82.08,104.55,132.86,CoraFull,oracle,17.57,33.39,53.07,71.06,93.59
+CoraFull,degree,25.63,43.86,62.15,82.12,104.32,CoraFull,degree,27.05,44.12,59.23,75.52,93.19,CoraFull,degree,20.69,34.81,48.69,64.93,79.07
+CoraFull,pagerank,3.56,6.64,12.02,19.86,33.64,CoraFull,pagerank,1.34,0.57,5.36,15.39,26.73,CoraFull,pagerank,3.17,4.04,9.86,19.66,30.39
+CoraFull,infattack_kl,1.91,2.2,4.54,5.33,8.0,CoraFull,infattack_kl,1.79,2.15,4.68,4.84,6.8,CoraFull,infattack_kl,1.8,2.93,5.24,6.71,9.79
+CoraFull,infattack_ul,1.01,2.63,4.6,6.17,8.6,CoraFull,infattack_ul,1.37,2.7,6.93,8.85,11.72,CoraFull,infattack_ul,1.08,2.92,5.07,7.55,10.36
+CoraFull,infmax,25.77,43.99,62.51,79.0,101.81,CoraFull,infmax,27.12,44.01,58.92,69.03,89.55,CoraFull,infmax,20.67,34.52,47.81,58.31,75.36
+CoraFull,rlp,6.95,11.71,17.28,27.07,41.74,CoraFull,rlp,6.37,8.66,12.12,18.83,27.19,CoraFull,rlp,3.83,7.05,8.83,13.39,24.92
+CoraFull,random,3.54,7.93,12.03,20.35,33.49,CoraFull,random,4.01,7.14,10.88,17.99,27.96,CoraFull,random,3.34,6.16,10.18,16.44,26.45
+CoraFull,viking,3.31,6.5,12.43,19.21,33.68,CoraFull,viking,1.31,5.18,6.5,6.0,11.97,CoraFull,viking,3.57,5.31,7.99,10.7,16.65
+CoraFull,graphmi,1.61,4.43,9.91,16.56,26.01,CoraFull,graphmi,1.36,3.22,6.91,9.52,20.44,CoraFull,graphmi,2.11,5.58,11.94,13.96,19.12
+CoraFull,graphzoom,0.33,1.84,5.26,7.13,18.51,CoraFull,graphzoom,27.62,42.74,56.74,71.89,91.09,CoraFull,graphzoom,16.22,24.07,33.42,43.58,55.39
+CoraFull,agpoa (query-drift),28.24,52.01,75.13,99.12,128.8,CoraFull,agpoa (query-drift),32.09,57.58,83.19,108.2,137.32,CoraFull,agpoa (query-drift),22.9,43.07,62.81,83.57,104.21
+CoraFull,agpoa (self-drift),4.44,7.09,12.77,20.88,35.66,CoraFull,agpoa (self-drift),2.79,6.12,14.45,23.84,37.08,CoraFull,agpoa (self-drift),3.66,7.64,14.48,24.08,35.05
+CoraFull,nettack (query-drift),27.17,49.67,71.24,95.82,129.51,CoraFull,nettack (query-drift),31.37,56.45,80.31,106.22,137.05,CoraFull,nettack (query-drift),21.96,41.54,61.66,82.4,106.6
+CoraFull,nettack (self-drift),11.91,25.78,37.41,49.84,69.57,CoraFull,nettack (self-drift),16.56,27.64,39.88,53.31,71.66,CoraFull,nettack (self-drift),6.21,13.14,20.01,28.14,38.98
+CoraFull,nag_r (query-drift),28.17,51.73,72.05,89.17,106.26,CoraFull,nag_r (query-drift),32.0,58.08,77.68,93.83,108.78,CoraFull,nag_r (query-drift),22.86,42.72,59.01,72.94,86.82
+CoraFull,nag_r (self-drift),3.05,5.61,9.49,15.92,24.28,CoraFull,nag_r (self-drift),2.7,6.81,11.05,14.67,21.22,CoraFull,nag_r (self-drift),3.22,6.99,9.9,13.91,19.14
+,,,,,,,,,,,,,,,,,,,,
+Coauthor-CS,oracle,9.36,24.53,49.69,83.13,129.28,Coauthor-CS,oracle,8.45,25.23,47.96,78.69,124.26,Coauthor-CS,oracle,2.47,7.86,16.63,32.33,59.34
+Coauthor-CS,degree,5.8,16.1,27.92,44.34,71.96,Coauthor-CS,degree,4.84,13.28,22.1,32.53,48.31,Coauthor-CS,degree,1.8,4.86,8.91,15.0,25.07
+Coauthor-CS,pagerank,0.51,1.73,4.44,9.57,20.35,Coauthor-CS,pagerank,0.81,2.42,5.82,14.9,22.94,Coauthor-CS,pagerank,0.07,0.58,1.38,3.44,8.63
+Coauthor-CS,infattack_kl,-0.69,-0.22,1.97,7.61,17.13,Coauthor-CS,infattack_kl,-0.96,0.62,7.03,16.69,31.37,Coauthor-CS,infattack_kl,-0.29,0.16,1.49,5.77,14.89
+Coauthor-CS,infattack_ul,-0.75,-0.44,1.43,5.75,14.42,Coauthor-CS,infattack_ul,-0.77,0.38,7.1,16.29,30.12,Coauthor-CS,infattack_ul,-0.16,0.07,0.95,3.69,11.57
+Coauthor-CS,infmax,6.0,16.7,28.5,48.0,76.87,Coauthor-CS,infmax,4.79,11.55,19.96,32.15,46.94,Coauthor-CS,infmax,1.81,4.93,9.23,15.24,24.84
+Coauthor-CS,rlp,4.28,8.05,15.13,23.49,36.48,Coauthor-CS,rlp,1.03,2.87,7.4,12.68,18.87,Coauthor-CS,rlp,1.0,1.91,3.79,6.56,11.51
+Coauthor-CS,random,1.59,3.57,6.36,11.36,18.5,Coauthor-CS,random,0.82,2.44,5.1,7.54,11.96,Coauthor-CS,random,0.31,0.97,2.05,3.47,6.15
+Coauthor-CS,viking,1.4,3.24,6.97,15.73,26.94,Coauthor-CS,viking,1.02,2.32,3.52,11.1,20.28,Coauthor-CS,viking,0.2,0.57,1.31,4.1,13.73
+Coauthor-CS,graphmi,3.05,5.87,10.52,18.16,27.02,Coauthor-CS,graphmi,2.12,4.79,8.56,14.0,24.4,Coauthor-CS,graphmi,0.83,2.18,4.01,6.93,11.67
+Coauthor-CS,graphzoom,-0.45,-0.29,0.35,2.37,6.54,Coauthor-CS,graphzoom,3.12,8.86,13.97,23.08,37.36,Coauthor-CS,graphzoom,-0.28,-0.03,0.37,1.73,4.65
+Coauthor-CS,agpoa (query-drift),9.22,23.35,46.24,77.53,121.23,Coauthor-CS,agpoa (query-drift),7.56,21.35,41.05,68.8,101.73,Coauthor-CS,agpoa (query-drift),2.45,7.31,15.19,28.96,50.96
+Coauthor-CS,agpoa (self-drift),1.96,7.14,16.74,31.77,53.45,Coauthor-CS,agpoa (self-drift),1.44,6.74,15.6,29.38,51.79,Coauthor-CS,agpoa (self-drift),0.35,1.67,4.58,10.45,21.58
+Coauthor-CS,nettack (query-drift),9.38,24.34,47.43,76.72,122.31,Coauthor-CS,nettack (query-drift),7.5,21.64,40.27,66.26,98.84,Coauthor-CS,nettack (query-drift),2.51,7.39,15.3,28.46,47.76
+Coauthor-CS,nettack (self-drift),6.62,17.35,35.25,60.89,94.65,Coauthor-CS,nettack (self-drift),3.72,12.61,24.82,42.22,64.45,Coauthor-CS,nettack (self-drift),1.46,4.71,9.98,19.34,31.44
+Coauthor-CS,nag_r (query-drift),9.15,22.48,40.76,62.69,84.1,Coauthor-CS,nag_r (query-drift),7.56,21.68,39.98,60.18,78.06,Coauthor-CS,nag_r (query-drift),2.47,7.25,14.04,21.26,26.42
+Coauthor-CS,nag_r (self-drift),1.91,6.53,13.18,20.01,31.19,Coauthor-CS,nag_r (self-drift),1.15,5.13,10.36,17.0,23.32,Coauthor-CS,nag_r (self-drift),0.35,1.24,2.71,5.05,8.49
+,,,,,,,,,,,,,,,,,,,,
+Amazon-Photo,oracle,21.35,40.26,59.57,78.87,97.31,Amazon-Photo,oracle,15.41,29.9,44.62,59.63,74.75,Amazon-Photo,oracle,7.11,14.7,23.07,31.91,41.03
+Amazon-Photo,degree,5.67,10.89,13.21,18.62,23.52,Amazon-Photo,degree,4.87,9.11,10.94,15.02,18.28,Amazon-Photo,degree,2.9,5.75,7.4,10.03,12.92
+Amazon-Photo,pagerank,4.92,5.99,7.38,11.51,14.03,Amazon-Photo,pagerank,4.58,5.42,6.56,10.4,12.24,Amazon-Photo,pagerank,2.59,3.59,4.48,7.44,9.79
+Amazon-Photo,infattack_kl,-3.24,-4.83,-7.13,-8.92,-10.19,Amazon-Photo,infattack_kl,-2.45,-3.6,-5.75,-7.73,-8.57,Amazon-Photo,infattack_kl,-0.11,0.92,1.3,1.77,2.62
+Amazon-Photo,infattack_ul,-3.33,-5.05,-7.55,-9.26,-10.47,Amazon-Photo,infattack_ul,-2.27,-3.33,-5.54,-7.54,-8.8,Amazon-Photo,infattack_ul,0.06,1.24,1.75,2.5,3.66
+Amazon-Photo,infmax,5.97,13.28,21.47,27.99,34.48,Amazon-Photo,infmax,5.24,11.33,17.89,22.83,28.94,Amazon-Photo,infmax,2.89,6.07,9.24,11.81,14.52
+Amazon-Photo,rlp,-0.03,1.93,4.04,6.49,10.19,Amazon-Photo,rlp,0.27,2.2,4.06,6.83,10.61,Amazon-Photo,rlp,-0.26,0.35,1.21,2.1,3.5
+Amazon-Photo,random,-0.0,0.28,0.56,1.38,1.78,Amazon-Photo,random,-0.18,-0.17,0.1,0.53,0.8,Amazon-Photo,random,0.11,0.42,0.84,1.43,1.71
+Amazon-Photo,viking,-0.72,-0.16,-0.44,-0.32,-0.14,Amazon-Photo,viking,-0.65,-0.25,0.01,0.62,2.02,Amazon-Photo,viking,0.12,0.03,0.36,0.57,1.09
+Amazon-Photo,graphmi,-1.07,-1.29,-2.02,-2.02,-2.36,Amazon-Photo,graphmi,-0.58,-1.01,-1.4,-2.1,-2.53,Amazon-Photo,graphmi,-0.25,-0.32,-0.24,-0.03,0.15
+Amazon-Photo,graphzoom,4.14,11.14,16.02,20.77,24.81,Amazon-Photo,graphzoom,3.4,7.33,11.26,15.37,19.5,Amazon-Photo,graphzoom,0.89,2.03,3.17,4.68,5.48
+Amazon-Photo,agpoa (query-drift),21.01,38.91,57.85,76.47,94.24,Amazon-Photo,agpoa (query-drift),14.96,28.81,42.92,57.14,71.43,Amazon-Photo,agpoa (query-drift),6.7,13.93,21.32,29.46,37.55
+Amazon-Photo,agpoa (self-drift),5.45,12.11,19.09,26.84,34.6,Amazon-Photo,agpoa (self-drift),5.41,11.22,18.09,24.53,31.58,Amazon-Photo,agpoa (self-drift),1.48,3.8,7.05,10.98,15.37
+Amazon-Photo,nettack (query-drift),21.03,39.7,59.18,78.28,96.61,Amazon-Photo,nettack (query-drift),15.24,29.49,44.03,58.94,73.39,Amazon-Photo,nettack (query-drift),6.96,14.49,22.45,30.92,39.43
+Amazon-Photo,nettack (self-drift),17.65,33.77,51.31,68.79,85.44,Amazon-Photo,nettack (self-drift),13.5,26.38,39.48,53.48,67.32,Amazon-Photo,nettack (self-drift),4.7,10.41,16.65,23.44,30.46
+Amazon-Photo,nag_r (query-drift),21.03,39.16,56.6,65.98,71.38,Amazon-Photo,nag_r (query-drift),15.01,28.78,42.62,49.34,56.84,Amazon-Photo,nag_r (query-drift),6.76,13.56,19.12,21.91,23.17
+Amazon-Photo,nag_r (self-drift),4.81,7.89,15.57,19.69,22.56,Amazon-Photo,nag_r (self-drift),4.88,7.41,13.02,16.13,18.36,Amazon-Photo,nag_r (self-drift),1.75,4.0,6.09,8.3,10.47
+,,,,,,,,,,,,,,,,,,,,
+Amazon-Computers,oracle,53.26,98.51,140.78,178.36,214.62,Amazon-Computers,oracle,41.7,77.92,111.58,144.48,177.21,Amazon-Computers,oracle,12.58,24.5,36.61,49.08,62.33
+Amazon-Computers,degree,12.71,21.18,37.68,49.97,59.57,Amazon-Computers,degree,14.01,21.13,36.88,48.52,56.97,Amazon-Computers,degree,4.65,7.27,12.47,17.04,21.35
+Amazon-Computers,pagerank,6.62,12.49,21.31,26.22,29.02,Amazon-Computers,pagerank,8.23,17.18,28.02,34.33,38.21,Amazon-Computers,pagerank,3.42,6.3,10.55,14.37,17.36
+Amazon-Computers,infattack_kl,-9.9,-17.37,-22.5,-28.19,-31.78,Amazon-Computers,infattack_kl,-6.9,-12.97,-18.93,-22.42,-26.29,Amazon-Computers,infattack_kl,-1.68,-3.06,-3.91,-3.81,-3.9
+Amazon-Computers,infattack_ul,-9.73,-16.98,-21.79,-27.53,-31.31,Amazon-Computers,infattack_ul,-6.81,-12.67,-18.52,-22.29,-26.18,Amazon-Computers,infattack_ul,-1.49,-2.62,-2.85,-2.04,-1.47
+Amazon-Computers,infmax,13.96,31.38,47.34,58.51,77.21,Amazon-Computers,infmax,15.89,31.09,46.04,55.17,70.48,Amazon-Computers,infmax,4.76,9.61,14.15,17.2,22.02
+Amazon-Computers,rlp,12.39,21.94,32.43,42.03,54.89,Amazon-Computers,rlp,15.26,22.01,29.49,37.24,48.48,Amazon-Computers,rlp,3.96,4.81,6.42,7.97,11.29
+Amazon-Computers,random,0.17,0.16,0.93,2.19,3.71,Amazon-Computers,random,-0.58,-0.99,-0.66,0.74,2.24,Amazon-Computers,random,0.35,0.54,1.2,2.18,3.43
+Amazon-Computers,viking,0.8,1.49,2.76,3.13,3.35,Amazon-Computers,viking,-1.91,-2.83,-4.19,-4.23,-3.63,Amazon-Computers,viking,0.29,0.76,0.93,1.12,1.21
+Amazon-Computers,graphmi,-2.55,-4.98,-6.79,-9.0,-9.7,Amazon-Computers,graphmi,-3.0,-5.18,-7.75,-9.36,-10.69,Amazon-Computers,graphmi,-1.18,-1.93,-2.23,-2.67,-2.92
+Amazon-Computers,graphzoom,12.63,24.87,36.78,44.93,51.67,Amazon-Computers,graphzoom,14.73,23.43,37.43,47.16,58.17,Amazon-Computers,graphzoom,0.56,1.01,1.72,2.79,3.85
+Amazon-Computers,agpoa (query-drift),52.2,96.23,137.12,175.07,212.09,Amazon-Computers,agpoa (query-drift),41.41,77.28,109.94,142.12,173.92,Amazon-Computers,agpoa (query-drift),11.37,22.34,33.41,45.05,57.11
+Amazon-Computers,agpoa (self-drift),13.11,31.17,48.81,64.69,80.82,Amazon-Computers,agpoa (self-drift),9.92,26.07,41.63,55.92,70.39,Amazon-Computers,agpoa (self-drift),2.21,5.36,9.32,14.07,19.98
+Amazon-Computers,nettack (query-drift),53.03,97.46,139.02,177.23,213.96,Amazon-Computers,nettack (query-drift),41.6,77.44,110.27,142.76,175.07,Amazon-Computers,nettack (query-drift),12.04,23.3,34.39,46.04,58.46
+Amazon-Computers,nettack (self-drift),41.18,77.04,111.1,142.41,172.01,Amazon-Computers,nettack (self-drift),37.94,70.91,101.68,131.58,161.03,Amazon-Computers,nettack (self-drift),2.0,5.49,10.0,14.9,21.0
+Amazon-Computers,nag_r (query-drift),52.44,96.25,131.07,147.21,159.63,Amazon-Computers,nag_r (query-drift),41.51,76.8,105.24,116.19,128.82,Amazon-Computers,nag_r (query-drift),11.4,21.01,26.01,25.3,26.04
+Amazon-Computers,nag_r (self-drift),13.4,22.97,37.23,45.08,53.1,Amazon-Computers,nag_r (self-drift),11.19,12.51,29.58,33.5,41.4,Amazon-Computers,nag_r (self-drift),2.33,5.7,8.53,11.82,14.16
+,,,,,,,,,,,,,,,,,,,,
+Coauthor-Physics,oracle,15.12,36.17,64.41,104.1,159.85,Coauthor-Physics,oracle,46.56,101.98,166.81,243.73,333.9,Coauthor-Physics,oracle,1.64,4.66,9.7,17.2,27.46
+Coauthor-Physics,degree,7.08,15.24,26.48,40.58,61.95,Coauthor-Physics,degree,20.35,42.92,69.32,101.37,138.76,Coauthor-Physics,degree,1.18,2.41,4.29,6.44,10.18
+Coauthor-Physics,pagerank,1.39,2.56,4.34,6.31,11.01,Coauthor-Physics,pagerank,-0.72,-1.66,1.95,8.99,14.68,Coauthor-Physics,pagerank,0.11,0.44,0.52,1.02,1.7
+Coauthor-Physics,infattack_kl,-0.08,0.56,2.19,5.76,10.74,Coauthor-Physics,infattack_kl,-0.39,0.49,6.26,14.23,26.04,Coauthor-Physics,infattack_kl,-0.6,-0.86,-0.94,-0.7,-0.2
+Coauthor-Physics,infattack_ul,-0.1,0.52,2.14,5.95,10.55,Coauthor-Physics,infattack_ul,-0.41,0.07,5.75,14.09,24.4,Coauthor-Physics,infattack_ul,-0.68,-0.96,-1.21,-0.98,-0.64
+Coauthor-Physics,infmax,7.35,15.75,26.36,40.43,60.41,Coauthor-Physics,infmax,21.0,41.6,65.52,97.69,130.09,Coauthor-Physics,infmax,1.05,2.42,3.67,5.68,8.87
+Coauthor-Physics,rlp,4.58,12.08,20.39,29.35,40.56,Coauthor-Physics,rlp,3.1,12.75,27.08,46.65,71.66,Coauthor-Physics,rlp,-0.38,-0.47,-0.44,-0.25,-0.1
+Coauthor-Physics,random,1.68,3.67,6.25,9.41,14.49,Coauthor-Physics,random,5.89,10.13,18.19,25.91,37.44,Coauthor-Physics,random,0.2,0.44,0.9,1.52,2.43
+Coauthor-Physics,viking,0.24,1.08,3.47,6.64,10.4,Coauthor-Physics,viking,1.74,6.71,14.51,27.34,44.32,Coauthor-Physics,viking,0.35,0.78,1.75,3.69,6.58
+Coauthor-Physics,graphmi,-2.27,-3.51,-4.07,-4.45,-3.1,Coauthor-Physics,graphmi,-1.45,-6.72,-6.46,-4.77,1.89,Coauthor-Physics,graphmi,-0.21,-0.19,0.13,0.48,1.09
+Coauthor-Physics,graphzoom,-0.25,1.5,3.91,8.39,11.94,Coauthor-Physics,graphzoom,-0.89,-1.02,2.73,13.74,25.36,Coauthor-Physics,graphzoom,0.82,1.98,3.89,5.72,8.03
+Coauthor-Physics,agpoa (query-drift),11.69,28.66,52.17,86.02,132.22,Coauthor-Physics,agpoa (query-drift),30.03,66.07,111.53,170.26,241.42,Coauthor-Physics,agpoa (query-drift),1.52,3.89,7.84,13.75,21.69
+Coauthor-Physics,agpoa (self-drift),0.77,4.11,10.31,21.09,38.49,Coauthor-Physics,agpoa (self-drift),5.09,16.25,36.37,65.09,102.52,Coauthor-Physics,agpoa (self-drift),0.1,0.76,2.52,5.81,10.36
+Coauthor-Physics,nettack (query-drift),14.33,34.28,61.13,98.26,150.56,Coauthor-Physics,nettack (query-drift),39.7,87.76,143.43,211.07,290.75,Coauthor-Physics,nettack (query-drift),1.47,3.98,8.04,14.01,21.99
+Coauthor-Physics,nettack (self-drift),7.55,18.84,33.31,53.45,79.63,Coauthor-Physics,nettack (self-drift),7.51,30.71,61.1,104.04,151.01,Coauthor-Physics,nettack (self-drift),-0.66,-0.6,0.19,1.41,3.52
+Coauthor-Physics,nag_r (query-drift),11.61,27.26,47.61,75.64,111.42,Coauthor-Physics,nag_r (query-drift),29.87,63.04,102.67,149.44,175.22,Coauthor-Physics,nag_r (query-drift),1.52,4.02,7.4,9.37,8.93
+Coauthor-Physics,nag_r (self-drift),1.27,3.83,8.67,17.25,29.47,Coauthor-Physics,nag_r (self-drift),5.66,17.41,33.68,48.5,62.88,Coauthor-Physics,nag_r (self-drift),0.13,0.45,0.39,1.09,1.39
+,,,,,,,,,,,,,,,,,,,,

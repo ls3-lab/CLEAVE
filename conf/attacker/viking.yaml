@@ -1,0 +1,20 @@
+# VIKING — supervised network-poisoning attack (Gupta & Chakraborty, PAKDD 2021, arXiv:2102.07164).
+# Faithful label-free port (VIKING-s): pseudo-labels from KMeans on the surrogate's clean embeddings;
+# closed-form community-purity edge scoring (A@L), greedy top-k removal. Structure/label-only signal —
+# distinct from nettack (features+weights margin) and agpoa (gradient drift).
+name: viking
+type: baseline
+description: "VIKING (Gupta & Chakraborty, PAKDD 2021) — community-purity poisoning, semi-supervised (pseudo-label) variant"
+trials: 1                 # deterministic given the seeded KMeans pseudo-labels
+num_pseudo_classes: 7     # C for the KMeans pseudo-label matrix L
+use_true_labels: false    # VIKING-s (label-free). true => supervised VIKING (uses data.y; leaves the black-box model)
+
+# Surrogate block (shared convention with nettack/agpoa): the surrogate's clean embeddings only feed
+# the pseudo-label clustering; the surrogate is distilled from the surrogate retriever (transfer).
+surrogate_hidden: 256
+surrogate_epochs: 200
+surrogate_lr: 0.01
+surrogate_weight_decay: 0.0005
+surrogate_dropout: 0.0
+surrogate_loss_type: cosine
+surrogate_patience: 30

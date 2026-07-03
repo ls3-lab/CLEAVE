@@ -1,0 +1,54 @@
+# EPA-GCL (Edge Perturbation Augmented Graph Contrastive Learning) retriever configuration
+name: epagcl
+hidden_dim: 256
+proj_dim: 256
+num_layers: 2
+activation: prelu
+tau: 0.4
+learning_rate: 0.001
+weight_decay: 0.00001
+epochs: 200
+edge_drop_rate: 0.3
+feature_drop_rate: 0.3
+model: gcn
+
+attack_model_path:
+  Cora:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/epagcl/Cora/best_ac_gcn_attack.pth
+  CiteSeer:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/epagcl/CiteSeer/best_ac_gcn_attack.pth
+  CoraFull:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/epagcl/CoraFull/best_ac_gcn_attack.pth
+  DBLP:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/epagcl/DBLP/best_ac_gcn_attack.pth
+  Coauthor-Physics:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/epagcl/Coauthor-Physics/best_ac_gcn_attack.pth
+  Coauthor-CS:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/epagcl/Coauthor-CS/best_ac_gcn_attack.pth
+  PubMed:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/epagcl/PubMed/best_ac_gcn_attack.pth
+  Amazon-Photo:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/epagcl/Amazon-Photo/best_ac_gcn_attack.pth
+  Amazon-Computers:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/epagcl/Amazon-Computers/best_ac_gcn_attack.pth
+
+
+oracle_model_path:
+  Cora:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/epagcl/Cora/best_ac_gcn.pth
+  CiteSeer:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/epagcl/CiteSeer/best_ac_gcn.pth
+  CoraFull:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/epagcl/CoraFull/best_ac_gcn.pth
+  DBLP:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/epagcl/DBLP/best_ac_gcn.pth
+  Coauthor-Physics:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/epagcl/Coauthor-Physics/best_ac_gcn.pth
+  Coauthor-CS:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/epagcl/Coauthor-CS/best_ac_gcn.pth
+  PubMed:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/epagcl/PubMed/best_ac_gcn.pth
+  Amazon-Photo:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/epagcl/Amazon-Photo/best_ac_gcn.pth
+  Amazon-Computers:
+    gcn: ${hydra:runtime.cwd}/cache/checkpoints/epagcl/Amazon-Computers/best_ac_gcn.pth

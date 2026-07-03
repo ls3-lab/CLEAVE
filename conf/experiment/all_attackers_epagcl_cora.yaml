@@ -1,0 +1,14 @@
+# @package _global_
+# Experiment: All attackers with EPAGCL retriever on Cora
+defaults:
+  - /dataset: cora
+  - /retriever: epagcl
+  - /attacker@attackers.0: random
+  - /attacker@attackers.1: degree
+  - /attacker@attackers.2: oracle
+  - /attacker@attackers.3: viking
+  - /attacker@attackers.4: pagerank
+  - /attacker@attackers.5: rlp
+
+general:
+  budget: 5

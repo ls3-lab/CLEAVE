@@ -1,0 +1,6 @@
+# PageRank-based attack baseline configuration
+name: pagerank
+type: baseline
+description: "Removes edges based on PageRank centrality scores"
+base_path: ${general.cache_dir}/trained_models
+damping_factor: 0.85

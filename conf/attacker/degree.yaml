@@ -1,0 +1,5 @@
+# Degree-based attack baseline configuration
+name: degree
+type: baseline
+description: "Removes edges connected to high-degree nodes"
+base_path: ${general.cache_dir}/trained_models

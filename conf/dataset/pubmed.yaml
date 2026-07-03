@@ -1,0 +1,12 @@
+# PubMed dataset configuration
+name: PubMed
+num_classes: 3
+num_features: 500
+split_ratio:
+  train: 0.6
+  val: 0.2
+  test: 0.2
+
+# Oracle/query finalization (see plan oracle-query-finalization)
+query_radius: 1hop      # centroid query neighborhood: 1hop | 2hop | blend
+brute_cutoff: 50        # oracle: deg<=cutoff -> exhaustive over all incident edges, else beam
