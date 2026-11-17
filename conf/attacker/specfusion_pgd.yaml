@@ -1,0 +1,13 @@
+name: specfusion_pgd
+type: beatpgd
+trials: 1
+surrogate_hidden: 256
+surrogate_out: 256
+surrogate_epochs: 300
+surrogate_lr: 0.001
+surrogate_weight_decay: 0.0005
+embedding_loss_type: cosine
+pgd_steps: 100
+pgd_lr: 0.1
+prop_k: 2
+fuse_beta: 0.5

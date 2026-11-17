@@ -1,0 +1,5 @@
+name: invariantsurrogate
+type: analytic3_addedge
+trials: 1
+query_radius: ""
+prop_k: 2

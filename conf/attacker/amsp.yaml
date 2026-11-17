@@ -1,0 +1,4 @@
+name: amsp
+type: analytic_addedge
+trials: 1
+query_radius: ""

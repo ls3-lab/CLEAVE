@@ -1,18 +1,18 @@
-# Contrastive Surrogate Attacks on Graph-Based Retrieval — Edge Addition
+# Rank Demotion in Graph Retrieval via Edge Addition
 
 **Sink any node in a GNN retriever's ranking by *adding* a handful of edges, without ever querying the victim.**
 
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](#license)
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-brightgreen.svg)](#installation)
 
-Implementation of **CLEAVE-add**, a **query-free black-box** adversarial **rank-demotion** attack on
+Implementation of **Undercut**, a **query-free black-box** adversarial **rank-demotion** attack on
 graph-based retrieval that works by **edge addition**, together with the evaluation framework: twelve
 baseline attacks adapted to the add-edge setting and three unsupervised graph contrastive retrievers
 (GRACE, GCA, EPAGCL). It is the edge-addition counterpart of the edge-removal CLEAVE attack.
 
 ## TL;DR
 
-A frozen GNN retriever ranks nodes by embedding similarity. CLEAVE-add inserts up to
+A frozen GNN retriever ranks nodes by embedding similarity. Undercut inserts up to
 **b = 1 to 5 new undirected edges** incident to a **target node** and pushes that node **down** the
 ranking. It never queries the victim, never sees labels, and never uses oracle information. It trains
 its **own** self-supervised contrastive GCN surrogate from scratch on nothing but **public graph
@@ -25,7 +25,7 @@ separately trained black-box victim.
 > **Metric.** Position change `delta_t = rank_after(t) - rank_before(t)`.
 > **Positive means the node moved down the ranking, i.e. a successful attack.**
 
-## How CLEAVE-add works
+## How Undercut works
 
 1. **Train a surrogate encoder from scratch.** A **two-layer GCN** trained with a **GRACE-style NT-Xent**
    contrastive objective (edge-dropping and feature-masking augmentations) on public topology and node
@@ -72,7 +72,7 @@ retriever, so transfer is a genuine empirical property rather than a result of q
 
 ## Key results
 
-At **budget 5**, CLEAVE-add produces the **largest rank demotion across the reported dataset × victim
+At **budget 5**, Undercut produces the **largest rank demotion across the reported dataset × victim
 settings**, outperforming the strongest baseline on every setting (by roughly **108% to 385%** at the
 dataset level), with the advantage growing as the insertion budget increases. The analytic
 degree-update scorer makes it **fast** — a few hundred milliseconds per target with a 1%-of-graph
@@ -82,7 +82,7 @@ specific ones).
 
 ## Baselines
 
-CLEAVE-add is compared against **twelve baselines** spanning the main families of graph attacks, all
+Undercut is compared against **twelve baselines** spanning the main families of graph attacks, all
 adapted to the add-edge retrieval setting (target-incident undirected edge *insertion*, same budget,
 evaluated on the separately trained victim):
 
@@ -93,7 +93,7 @@ evaluated on the separately trained victim):
 | Published and gradient-oriented add-edge | DICE, SPAC, PGA, AGPOA, NAG-R |
 
 The gradient baselines use a proxy or surrogate for their gradients, kept separate from the held-out
-victim, so the comparison is conservative with respect to CLEAVE-add's stricter access model.
+victim, so the comparison is conservative with respect to Undercut's stricter access model.
 
 > **Note (GraphMI).** GraphMI optimizes a dense `N×N` adjacency via projected gradient descent, so its
 > memory scales quadratically with the number of nodes; on the largest-node graphs it exceeds GPU
@@ -108,17 +108,17 @@ victim, so the comparison is conservative with respect to CLEAVE-add's stricter 
 ├── retriever_attack.py           # entry: run attackers on black-box retrievers, writes output_addedge/ CSVs
 ├── conf/                         # Hydra configs
 │   ├── config_addedge.yaml       # generic add-edge entry (override attacker@attackers.1=<name>)
-│   ├── config_addedge_cleaveadd.yaml  # CLEAVE-add entry point
+│   ├── config_addedge_undercut.yaml  # Undercut entry point
 │   ├── dataset/                  # 9 datasets
 │   ├── retriever/                # epagcl.yaml, gca.yaml, grace.yaml
-│   └── attacker/                 # baseline configs plus cleave_add.yaml (CLEAVE-add)
+│   └── attacker/                 # baseline configs plus undercut.yaml (Undercut)
 ├── src/
 │   ├── attackers/
 │   │   ├── base.py               # Attacker contract (add_edge mode)
 │   │   ├── random.py, degree.py, pagerank.py, infmax.py, viking.py, rlp.py, graphmi.py, agpoa.py, nag_r.py
 │   │   ├── __init__.py           # attacker registry
 │   │   └── contrib/
-│   │       ├── cleave_add.py        # CLEAVE-add, class CLEAVEAddAttack (proposed method)
+│   │       ├── undercut.py        # Undercut, class UndercutAttack (proposed method)
 │   │       ├── _analytic_utils.py   # analytic Â^k X propagation + shortlist score (self-contained)
 │   │       ├── published_addedge.py # DICE, SPAC, PGA add-edge baselines
 │   │       ├── cleave_attack.py     # contrastive surrogate attacker base
@@ -146,17 +146,17 @@ pip install -r requirements.txt
 **Retriever checkpoints (not bundled).** Trained victim and surrogate weights are **not** shipped
 with the repository. Train them from the deterministic, seeded scripts under `src/retrievers/`
 (see [Training retrievers](#training-retrievers)); they are written to
-`cache/checkpoints/<retriever>/<Dataset>/`. CLEAVE-add trains its own surrogate from scratch and needs
+`cache/checkpoints/<retriever>/<Dataset>/`. Undercut trains its own surrogate from scratch and needs
 only the **victim** checkpoint to evaluate an attack.
 
 ## Quickstart
 
 ```bash
-# 1) Run CLEAVE-add on PubMed against the GCA victim (budgets 1 to 5)
-python retriever_attack.py --config-name config_addedge_cleaveadd dataset=pubmed retriever=gca general.budget=5
+# 1) Run Undercut on PubMed against the GCA victim (budgets 1 to 5)
+python retriever_attack.py --config-name config_addedge_undercut dataset=pubmed retriever=gca general.budget=5
 
-# 2) Sweep CLEAVE-add across all three victim retrievers on Coauthor-CS
-python retriever_attack.py --config-name config_addedge_cleaveadd dataset=coauthor_cs --multirun retriever=epagcl,gca,grace
+# 2) Sweep Undercut across all three victim retrievers on Coauthor-CS
+python retriever_attack.py --config-name config_addedge_undercut dataset=coauthor_cs --multirun retriever=epagcl,gca,grace
 
 # 3) Run a baseline (e.g. PGA) on the generic add-edge config
 python retriever_attack.py --config-name config_addedge dataset=pubmed retriever=gca general.budget=5 attacker@attackers.1=pga_add
@@ -217,7 +217,7 @@ Attacks live behind a small contract in `src/attackers/base.py`. For edge additi
 base `attack(..., add_edge=True)` rounds to the top-`budget` candidates and inserts them. Drop a module
 under `src/attackers/contrib/` exposing an `ATTACKERS` dict (or calling `register_attacker` at import),
 add a `conf/attacker/<name>.yaml` with a matching `name:`, and select it with
-`attacker@attackers.1=<name>`. CLEAVE-add (`src/attackers/contrib/cleave_add.py`) is implemented exactly
+`attacker@attackers.1=<name>`. Undercut (`src/attackers/contrib/undercut.py`) is implemented exactly
 this way and doubles as a worked example.
 
 ## Ethics and responsible use

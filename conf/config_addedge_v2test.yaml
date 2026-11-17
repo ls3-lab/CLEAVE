@@ -1,0 +1,19 @@
+# Matched test: v2 vs v1-greedy vs PGD on the same targets. add_edge.
+defaults:
+  - dataset: pubmed
+  - retriever: grace
+  - attacker@attackers.1: greedy_anchor_v2
+  - attacker@attackers.2: greedy_anchor
+  - attacker@attackers.3: pgd_add
+  - _self_
+general:
+  seed: 42
+  device: cuda
+  budget: 5
+  graph_model: gcn
+  add_edge: true
+  output_dir: ${hydra:runtime.cwd}/output_addedge
+  cache_dir: ${hydra:runtime.cwd}/cache
+hydra:
+  run:
+    dir: ${general.output_dir}/${now:%Y-%m-%d}/${now:%H-%M-%S}

@@ -1,4 +1,4 @@
-"""Self-contained analytic propagation helpers for the CLEAVE-add shortlist.
+"""Self-contained analytic propagation helpers for the Undercut shortlist.
 Â^k X propagation + the surrogate-free analytic demotion score used to form the
 anchor shortlist. Extracted so the proposed method has no dependency on exploratory modules.
 """

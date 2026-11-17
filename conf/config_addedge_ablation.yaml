@@ -1,0 +1,19 @@
+# ablation: greedy_anchor + anchor_pgd + pgd_add slots. add_edge.
+defaults:
+  - dataset: cora
+  - retriever: epagcl
+  - attacker@attackers.1: greedy_anchor
+  - attacker@attackers.2: anchor_pgd
+  - attacker@attackers.3: pgd_add
+  - _self_
+general:
+  seed: 42
+  device: cuda
+  budget: 5
+  graph_model: gcn
+  add_edge: true
+  output_dir: ${hydra:runtime.cwd}/output_addedge
+  cache_dir: ${hydra:runtime.cwd}/cache
+hydra:
+  run:
+    dir: ${general.output_dir}/${now:%Y-%m-%d}/${now:%H-%M-%S}

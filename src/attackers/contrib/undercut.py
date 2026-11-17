@@ -1,4 +1,4 @@
-"""CLEAVE-add: query-free, black-box edge-addition rank-demotion attack (proposed method).
+"""Undercut: query-free, black-box edge-addition rank-demotion attack (proposed method).
 
 Trains a contrastive surrogate on the public graph, forms an anchor shortlist of candidate
 endpoints (closed-form low-pass analytic score UNION one-step surrogate gradient), and selects
@@ -21,7 +21,7 @@ from src.utils.logger_utils import setup_logger
 logger = setup_logger(__name__)
 
 
-class CLEAVEAddAttack(_GradSurrogateBase, _AnalyticMixin):
+class UndercutAttack(_GradSurrogateBase, _AnalyticMixin):
     def __init__(self, cfg, system_config: DictConfig, data: Data, retriever=None, **kwargs):
         super().__init__(cfg, system_config, data, retriever=retriever, **kwargs)
         self._init_analytic(cfg, data)
@@ -34,7 +34,7 @@ class CLEAVEAddAttack(_GradSurrogateBase, _AnalyticMixin):
         self._deg = deg                                   # [N] clean node degrees
         self._Z = self.clean_embeddings                   # [N,d] surrogate clean embeddings
         self._qcache = {}
-        logger.info("CLEAVE-add: greedy add-recompute-rescore with analytic degree-update marginals")
+        logger.info("Undercut: greedy add-recompute-rescore with analytic degree-update marginals")
 
     def _q(self, t):
         q = self._qcache.get(t)
@@ -103,5 +103,5 @@ class CLEAVEAddAttack(_GradSurrogateBase, _AnalyticMixin):
         return out
 
 
-register_attacker("cleave_add", CLEAVEAddAttack)
-ATTACKERS = {"cleave_add": CLEAVEAddAttack}
+register_attacker("undercut", UndercutAttack)
+ATTACKERS = {"undercut": UndercutAttack}

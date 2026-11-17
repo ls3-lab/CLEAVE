@@ -1,8 +1,9 @@
-# CLEAVE-add (proposed). add_edge mode.
+# CLEAVE in add-edge mode. Reuses the cleave attacker config; sets add_edge.
+# Results append to the same results_add_<dataset>_<retriever>_<budget>.csv set.
 defaults:
   - dataset: cora
   - retriever: grace
-  - attacker@attackers.1: cleave_add
+  - attacker@attackers.1: cleave
   - _self_
 general:
   seed: 42
