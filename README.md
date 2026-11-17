@@ -8,7 +8,7 @@
 Implementation of **Undercut**, a **query-free black-box** adversarial **rank-demotion** attack on
 graph-based retrieval that works by **edge addition**, together with the evaluation framework: twelve
 baseline attacks adapted to the add-edge setting and three unsupervised graph contrastive retrievers
-(GRACE, GCA, EPAGCL). It is the edge-addition counterpart of the edge-removal CLEAVE attack.
+(GRACE, GCA, EPAGCL).
 
 ## TL;DR
 
@@ -120,9 +120,7 @@ victim, so the comparison is conservative with respect to Undercut's stricter ac
 │   │   └── contrib/
 │   │       ├── undercut.py        # Undercut, class UndercutAttack (proposed method)
 │   │       ├── _analytic_utils.py   # analytic Â^k X propagation + shortlist score (self-contained)
-│   │       ├── published_addedge.py # DICE, SPAC, PGA add-edge baselines
-│   │       ├── cleave_attack.py     # contrastive surrogate attacker base
-│   │       └── edges/               # self-supervised GRACE surrogate (NT-Xent + augmentations)
+│   │       └── published_addedge.py # DICE, SPAC, PGA add-edge baselines
 │   ├── retrievers/               # EPAGCL / GCA / GRACE encoders plus registry
 │   ├── data/                     # PyG loader, train/test target splits
 │   ├── evaluations/retrieval.py  # centroid-query ranking, position_change metric
