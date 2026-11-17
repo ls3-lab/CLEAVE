@@ -422,6 +422,13 @@ class NAGRAttackRetriever(NAGRAttack):
     def attack(self, target_node: int, budget: int, add_edge: bool = False):
         if isinstance(target_node, torch.Tensor):
             target_node = int(target_node.item())
+        if add_edge:
+            saved_trials = self.trials
+            self.trials = 1
+            try:
+                return self._attack_add(target_node, budget)
+            finally:
+                self.trials = saved_trials
         embedding_list = []
         max_b = max(budget, getattr(self.system_config.general, "budget", 5))
         for run_idx in range(self.trials):
@@ -482,3 +489,47 @@ class NAGRAttackRetriever(NAGRAttack):
         loss = self._target_embedding_loss(out, target_node)
         (grad,) = torch.autograd.grad(loss, edge_values)
         return grad.detach()
+
+    def score_candidates(self, target_node):
+        """Add-edge mode: first-order gradient of the demotion loss w.r.t. each
+        candidate non-edge (target, j), evaluated at edge value 0.
+
+        Builds an augmented normalized-GCN forward whose adjacency includes ALL
+        candidate directed edges (t->j and j->t) at value 0 (requires_grad), plus
+        the existing edges and self-loops. Backprop gives dL/d(edge_value); the
+        per-node score sums the (t,j) and (j,t) gradients. Higher = adding that
+        edge increases the demotion loss most, so the base adds those first.
+        Deterministic given the trained surrogate, so add-edge runs a single trial.
+        """
+        import torch.nn.functional as _F
+        if isinstance(target_node, torch.Tensor):
+            target_node = int(target_node.item())
+        self._activate_surrogate_run(0)
+        n = self._n; dev = self.device
+        j = torch.arange(n, device=dev)
+        tcol = torch.full((n,), target_node, device=dev, dtype=torch.long)
+        cand_both = torch.cat([torch.stack([tcol, j]), torch.stack([j, tcol])], dim=1)  # [2, 2N]
+        E = self._edge_index.shape[1]
+        all_indices = torch.cat([self._edge_index, cand_both, self._self_loop_indices], dim=1)
+        base = torch.ones(E, device=dev)
+        cand_vals = torch.zeros(2 * n, device=dev, requires_grad=True)
+        loops = torch.ones(n, device=dev)
+        all_values = torch.cat([base, cand_vals, loops])
+        adj_hat = torch.sparse_coo_tensor(all_indices, all_values, (n, n))
+        deg = torch.sparse.mm(adj_hat, torch.ones(n, 1, device=dev)).squeeze(1)
+        dis = deg.pow(-0.5)
+        dis = torch.where(torch.isinf(dis), torch.zeros_like(dis), dis)
+        row, col = all_indices
+        norm = dis[row] * all_values * dis[col]
+        adj_norm = torch.sparse_coo_tensor(all_indices, norm, (n, n))
+        h = torch.sparse.mm(adj_norm, self._xW1)
+        if self._b1 is not None:
+            h = h + self._b1
+        h = _F.relu(h)
+        out = torch.sparse.mm(adj_norm, h @ self._W2.t())
+        if self._b2 is not None:
+            out = out + self._b2
+        loss = self._target_embedding_loss(out, target_node)
+        (grad,) = torch.autograd.grad(loss, cand_vals)
+        return (grad[:n] + grad[n:]).detach().float()
+

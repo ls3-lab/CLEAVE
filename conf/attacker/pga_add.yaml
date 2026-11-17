@@ -1,0 +1,13 @@
+name: pga_add
+type: published_addedge
+description: "PGA (Wang et al. TKDE 2024) add-edge — partial-graph gradient over candidate shortlist"
+trials: 1
+khop: 2
+shortlist: 512
+surrogate_hidden: 256
+surrogate_epochs: 200
+surrogate_lr: 0.01
+surrogate_weight_decay: 0.0005
+surrogate_dropout: 0.0
+surrogate_loss_type: cosine
+surrogate_patience: 30

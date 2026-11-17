@@ -106,3 +106,32 @@ class VikingAttack(Attacker):
             mu_after = float((new_row * Lt).sum()) / new_den if new_den > 0 else 0.0
             scores[e] = mu_clean - mu_after     # purity DROP; >0 = removal hurts the target's class purity
         return scores
+
+    def score_candidates(self, target_node: int) -> torch.Tensor:
+        """Add-edge mode: score every node as a candidate new neighbor by the
+        community-purity DROP it induces at the target.
+
+        VIKING's purity ``mu`` is the fraction of the target's neighbor-label
+        mass that lands on its own (pseudo)class. Adding edge (target, j) adds
+        ``L[j]`` to the target's neighbor mass (rank-1 update); the score is the
+        resulting drop in ``mu``. Connecting the target to an out-of-class node
+        dilutes its class purity (positive drop => demotion), so the base adds
+        the largest-drop candidates first. Fully vectorized on-device over all
+        nodes.
+        """
+        if isinstance(target_node, torch.Tensor):
+            target_node = int(target_node.item())
+        L = self._L                                   # [N, C]
+        # target's current neighbor-label mass
+        ei = self.data.edge_index
+        nbrs = torch.cat([ei[1, ei[0] == target_node], ei[0, ei[1] == target_node]])
+        midval_t = L[nbrs].sum(0) if nbrs.numel() > 0 else torch.zeros(L.size(1), device=self.device)
+        Lt = L[target_node]                           # [C] own class one-hot
+        den = float(midval_t.sum())
+        mu_clean = float((midval_t * Lt).sum()) / den if den > 0 else 0.0
+        # adding candidate j: new_row = midval_t + L[j]  (vectorized over all j)
+        new_rows = midval_t.unsqueeze(0) + L          # [N, C]
+        new_den = new_rows.sum(dim=1)                 # [N]
+        mu_after = (new_rows * Lt.unsqueeze(0)).sum(dim=1) / new_den.clamp(min=1e-12)  # [N]
+        return (mu_clean - mu_after).float()          # purity drop; higher = add first
+

@@ -54,6 +54,7 @@ def _atomic_to_csv(df, path):
 def main(cfg: DictConfig):
     # Set seed
     torch.manual_seed(cfg.general.seed)
+    add_edge = bool(getattr(cfg.general, "add_edge", False))
     output_dir = HydraConfig.get().runtime.output_dir
     logger.info('Working directory: {}\n'.format(output_dir))
     logger.info('Setting up the system for retrieval attack\nDataset: {}\nRetriever: {}\nBudget: {}\nDevice: {}\n'.format(cfg.dataset.name, cfg.retriever.name, cfg.general.budget, cfg.general.device))
@@ -75,6 +76,7 @@ def main(cfg: DictConfig):
     retriever = get_retriever(cfg.retriever, cfg, data, device, use_oracle=False)          # victim (eval)
     surrogate_retriever = get_retriever(cfg.retriever, cfg, data, device, use_oracle=True)  # surrogate (attack)
     logger.info('Retriever: {} (victim=eval, surrogate=attack)\n'.format(cfg.retriever.name))
+    logger.info('Attack mode: {}\n'.format('ADD-EDGE' if add_edge else 'REMOVE-EDGE'))
     attackers = load_attackers(attackers_configs,
                                system_config=cfg,
                                data=data,
@@ -90,7 +92,8 @@ def main(cfg: DictConfig):
     # everything in a fresh dir (which would let a >walltime task loop forever).
     stable_out = os.path.join(cfg.general.output_dir, "attacks")
     os.makedirs(stable_out, exist_ok=True)
-    results_path_name = f"{stable_out}/results_{cfg.dataset.name}_{cfg.retriever.name}_{cfg.general.budget}.csv"
+    mode_tag = "add" if add_edge else "remove"
+    results_path_name = f"{stable_out}/results_{mode_tag}_{cfg.dataset.name}_{cfg.retriever.name}_{cfg.general.budget}.csv"
     timing_path_name = results_path_name.replace('.csv', '_timing.csv')
     # RESUME: a results CSV may already hold completed (attacker, node, budget) rows (a prior run
     # that was preempted). Reload it, skip those triples, append only NEW rows, write atomically.
@@ -127,7 +130,7 @@ def main(cfg: DictConfig):
                 if (attacker.name, int(node), budget) in done:   # already computed (resume)
                     continue
                 try:
-                    attacked_data = attacker.attack(node, budget)
+                    attacked_data = attacker.attack(node, budget, add_edge=add_edge)
                     result = evaluate_retrieval(
                         retriever=retriever,
                         original_data=data,

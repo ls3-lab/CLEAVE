@@ -1,0 +1,12 @@
+name: dice_add
+type: published_addedge
+description: "DICE (Waniek et al. 2018) add-edge — connect target outside its (pseudo-label) community"
+trials: 1
+num_pseudo_classes: 7
+surrogate_hidden: 256
+surrogate_epochs: 200
+surrogate_lr: 0.01
+surrogate_weight_decay: 0.0005
+surrogate_dropout: 0.0
+surrogate_loss_type: cosine
+surrogate_patience: 30

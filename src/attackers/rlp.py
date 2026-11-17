@@ -46,6 +46,11 @@ class RLPAttack(Attacker):
         self.selected_nodes = torch.tensor(get_target_nodes(self.test_mask), dtype=torch.long, device=self.device)
         self.rlp_models = {}
         self.rlp_model = None
+        # Add-edge direction: "reverse" (default, consistent with reverse-LP
+        # removal) adds the LEAST-plausible non-edges (anomalous / dissimilar
+        # endpoints => demotion); "forward" adds the MOST-plausible non-edges
+        # (the plausibility / stealth floor).
+        self.lp_direction = str(getattr(cfg, "lp_direction", "reverse")).lower()
 
     def _create_test_set(self, target_node: int) -> Data:
         """Create test set containing only edges connected to target node."""
@@ -98,13 +103,23 @@ class RLPAttack(Attacker):
         return scores
 
 
-    def attack(self, target_node: int, budget: int) -> Data:
+    def attack(self, target_node: int, budget: int, add_edge: bool = False) -> Data:
         """
-        Execute attack by removing top-scored edges.
-        
+        Execute attack by removing top-scored edges (or adding, in add-edge mode).
+
         Returns:
-            Modified graph data with edges removed
+            List of modified graph data (one per trial).
         """
+        if add_edge:
+            # Add-edge mode is DETERMINISTIC given the trained VGAE (same model
+            # -> same candidate scores), so multiple trials would just repeat
+            # identical VGAE training and scoring. Force a single trial.
+            saved_trials = self.trials
+            self.trials = 1
+            try:
+                return self._attack_add(target_node, budget)
+            finally:
+                self.trials = saved_trials
         embedding_list = []
         for i in range(self.trials):
             local_seed = self.seed + i
@@ -189,6 +204,38 @@ class RLPAttack(Attacker):
 
         return training_set
 
+    def score_candidates(self, target_node: int) -> torch.Tensor:
+        """Add-edge mode: score every node as a candidate new neighbor of the
+        target using the VGAE link-prediction decoder.
 
+        The VGAE is trained (or reused) exactly as in the removal path, then the
+        full graph is encoded once and the decoder scores the non-edges
+        (target, j) for all j. With ``lp_direction="reverse"`` (default) the
+        returned score is the NEGATIVE link probability, so the base adds the
+        LEAST-plausible (most anomalous) non-edges — the reverse-LP direction,
+        which connects the target to dissimilar nodes (demotion). With
+        ``lp_direction="forward"`` the score is the link probability itself, so
+        the most-plausible non-edges are added (the plausibility / stealth
+        floor).
+        """
+        if isinstance(target_node, torch.Tensor):
+            target_node = int(target_node.item())
+        device = self.device
+        seed = self.seed
+        if seed not in self.rlp_models:
+            self.rlp_models[seed] = self.train_rlp_model(seed)
+        model = self.rlp_models[seed]
 
+        full = NormalizeFeatures()(self.data.clone()).to(device)
+        num_nodes = int(getattr(full, "num_nodes", 0) or full.x.size(0))
+        model.eval()
+        with torch.no_grad():
+            z = model.encode(full.x, full.edge_index)
+            cand = torch.stack([
+                torch.full((num_nodes,), target_node, dtype=torch.long, device=device),
+                torch.arange(num_nodes, device=device),
+            ], dim=0)
+            prob = model.decoder(z, cand)          # [N] link probabilities
+        prob = prob.float()
+        return -prob if self.lp_direction == "reverse" else prob
 

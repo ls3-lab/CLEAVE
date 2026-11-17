@@ -1,4 +1,5 @@
 from typing import Tuple
+import torch
 from torch_geometric.data import Data
 from torch_geometric.utils import to_networkx
 import networkx as nx
@@ -44,3 +45,16 @@ class PageRankAttack(Attacker):
             scores[edge] = pagerank_scores.get(neighbor, 0.0)
         
         return scores
+
+    def score_candidates(self, target_node: int) -> torch.Tensor:
+        """Add-edge mode: attach the target to the HIGHEST personalized-PageRank
+        nodes (those a random walk personalized at the target reaches most).
+
+        Reuses ``_compute_pagerank`` (the exact removal signal) over ALL nodes.
+        """
+        num_nodes = int(getattr(self.data, "num_nodes", 0) or self.data.x.size(0))
+        pr = self._compute_pagerank(target_node)
+        vec = torch.zeros(num_nodes, dtype=torch.float, device=self.data.edge_index.device)
+        for n, v in pr.items():
+            vec[int(n)] = float(v)
+        return vec

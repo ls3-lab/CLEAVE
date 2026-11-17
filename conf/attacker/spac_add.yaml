@@ -1,0 +1,12 @@
+name: spac_add
+type: published_addedge
+description: "SPAC / Spectral Distance (Lin et al. KDD 2022) add-edge — Laplacian spectral perturbation"
+trials: 1
+n_eig: 64
+surrogate_hidden: 256
+surrogate_epochs: 200
+surrogate_lr: 0.01
+surrogate_weight_decay: 0.0005
+surrogate_dropout: 0.0
+surrogate_loss_type: cosine
+surrogate_patience: 30

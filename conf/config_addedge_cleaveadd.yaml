@@ -1,0 +1,17 @@
+# CLEAVE-add (proposed). add_edge mode.
+defaults:
+  - dataset: cora
+  - retriever: grace
+  - attacker@attackers.1: cleave_add
+  - _self_
+general:
+  seed: 42
+  device: cuda
+  budget: 5
+  graph_model: gcn
+  add_edge: true
+  output_dir: ${hydra:runtime.cwd}/output_addedge
+  cache_dir: ${hydra:runtime.cwd}/cache
+hydra:
+  run:
+    dir: ${general.output_dir}/${now:%Y-%m-%d}/${now:%H-%M-%S}

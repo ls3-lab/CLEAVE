@@ -61,7 +61,9 @@ class InfMaxAttack(Attacker):
 
         self._order_cache: Dict[int, List[Tuple[int, int]]] = {}
 
-    def attack(self, target_node, budget: int) -> list:
+    def attack(self, target_node, budget: int, add_edge: bool = False) -> list:
+        if add_edge:
+            return self._attack_add(target_node, budget)
         if isinstance(target_node, torch.Tensor):
             target_node = int(target_node.item())
 
@@ -171,3 +173,19 @@ class InfMaxAttack(Attacker):
         for _ in range(self.K - 1):
             M = M @ self.Prob
         return M
+
+    def score_candidates(self, target_node: int) -> torch.Tensor:
+        """Add-edge mode: attach the target to the highest-influence nodes.
+
+        The random-walk influence matrix ``M`` (``self._M_recv``: rows =
+        receivers over the test set, columns = nodes) gives each node's
+        influence reach. The per-node score is the receiver-summed influence
+        column (the RWCS signal), so the base adds edges to the nodes whose
+        influence over the retrieval set is largest. Structure-only, query-free.
+        """
+        import numpy as _np
+        if isinstance(target_node, torch.Tensor):
+            target_node = int(target_node.item())
+        per = _np.asarray(self._M_recv.sum(axis=0)).ravel()   # [N] influence reach
+        return torch.tensor(per, dtype=torch.float, device=self.device)
+

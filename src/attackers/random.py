@@ -1,5 +1,6 @@
 import random
 from typing import Tuple
+import torch
 from torch_geometric.data import Data
 from omegaconf import DictConfig
 
@@ -30,3 +31,8 @@ class RandomAttack(Attacker):
             scores[edge] = random.random()
         
         return scores
+
+    def score_candidates(self, target_node: int) -> torch.Tensor:
+        """Add-edge mode: uniform-random score over all candidate new neighbors."""
+        num_nodes = int(getattr(self.data, "num_nodes", 0) or self.data.x.size(0))
+        return torch.rand(num_nodes, device=self.data.edge_index.device)

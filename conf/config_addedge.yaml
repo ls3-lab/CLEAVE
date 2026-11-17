@@ -1,0 +1,31 @@
+# Add-edge attack root config.
+# Reuses the EXISTING attacker configs and evaluation harness, but flips the
+# framework into edge-ADDITION mode via general.add_edge: true. Each attacker
+# scores candidate NON-edges {target, j} (score_candidates) instead of incident
+# edges, and the base attack() inserts the top-budget symmetrically.
+#
+# The six adapted attackers (query-free / label-free, matching CLEAVE's threat
+# model): random, degree, pagerank, infmax, viking, rlp.
+defaults:
+  - dataset: cora
+  - retriever: grace
+  - attacker@attackers.1: random
+  - attacker@attackers.2: degree
+  - attacker@attackers.3: pagerank
+  - attacker@attackers.4: infmax
+  - attacker@attackers.5: viking
+  - attacker@attackers.6: rlp
+  - _self_
+
+general:
+  seed: 42
+  device: cuda
+  budget: 5
+  graph_model: gcn
+  add_edge: true                      # <-- activates edge-ADDITION mode
+  output_dir: ${hydra:runtime.cwd}/output_addedge
+  cache_dir: ${hydra:runtime.cwd}/cache
+
+hydra:
+  run:
+    dir: ${general.output_dir}/${now:%Y-%m-%d}/${now:%H-%M-%S}

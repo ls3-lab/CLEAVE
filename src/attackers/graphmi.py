@@ -373,6 +373,13 @@ class GraphMIAttack(Attacker):
     def attack(self, target_node: int, budget: int, add_edge: bool = False) -> list[Data]:
         if isinstance(target_node, torch.Tensor):
             target_node = int(target_node.item())
+        if add_edge:
+            saved_trials = self.trials
+            self.trials = 1
+            try:
+                return self._attack_add(target_node, budget)
+            finally:
+                self.trials = saved_trials
         embedding_list = []
         for run_idx in range(self.trials):
             torch.manual_seed(self.seed + run_idx)
@@ -429,3 +436,24 @@ class GraphMIAttackRetriever(GraphMIAttack):
             f"time={getattr(model, 'retriever_surrogate_time', 0.0):.4f}s"
         )
         return model, None
+
+
+    def score_candidates(self, target_node):
+        """Add-edge mode: score candidate new neighbors by GraphMI's reconstruction
+        plausibility matrix (``edge_probs``), in the DEMOTION (reverse) direction.
+
+        GraphMI's PGD reconstructs an edge-probability matrix; a high value means
+        the endpoints are reconstruction-plausible (similar in the inverted
+        surrogate space). Demotion needs the target connected to DISSIMILAR nodes,
+        so the default ``mi_direction="reverse"`` returns the NEGATIVE plausibility
+        (add least-plausible non-edges first); ``"forward"`` adds the most-plausible
+        (a stealth/plausibility floor). Deterministic given the inversion, so
+        add-edge runs a single trial.
+        """
+        if isinstance(target_node, torch.Tensor):
+            target_node = int(target_node.item())
+        direction = str(getattr(self, "mi_direction", getattr(self.cfg, "mi_direction", "reverse"))).lower()
+        ep = self.edge_probs_runs[0]
+        row = ep[target_node].float().to(self.device)
+        return -row if direction == "reverse" else row
+

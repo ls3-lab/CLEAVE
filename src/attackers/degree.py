@@ -38,3 +38,12 @@ class DegreeAttack(Attacker):
             scores[edge] = float(self.degrees[neighbor])
 
         return scores
+
+    def score_candidates(self, target_node: int) -> torch.Tensor:
+        """Add-edge mode: attach the target to the HIGHEST-degree nodes (hubs).
+
+        Mirrors the removal signal (neighbor degree). ``sort_reverse`` is unused
+        in add-edge mode; the base always takes the top-scored (= highest-degree)
+        candidates.
+        """
+        return self.degrees.to(self.data.edge_index.device).float()

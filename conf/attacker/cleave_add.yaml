@@ -1,0 +1,14 @@
+name: cleave_add
+type: cleave_add
+trials: 1
+surrogate_hidden: 256
+surrogate_out: 256
+surrogate_epochs: 300
+surrogate_lr: 0.001
+surrogate_weight_decay: 0.0005
+embedding_loss_type: cosine
+pgd_steps: 100
+pgd_lr: 0.1
+prop_k: 2
+anchor_K: 128
+polish_steps: 0
