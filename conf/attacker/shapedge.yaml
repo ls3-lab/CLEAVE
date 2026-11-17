@@ -1,8 +1,0 @@
-name: shapedge
-type: setselect_addedge
-trials: 1
-query_radius: ""
-prop_k: 2
-cand_topM: 256
-shap_perms: 32
-shap_M: 48

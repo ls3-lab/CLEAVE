@@ -176,7 +176,7 @@ class SPACAddAttack(_SurrogateBase):
 
 class _GradSurrogateBase(_SurrogateBase):
     """Adds a differentiable augmented-adjacency GCN forward over candidate
-    non-edges, reused by the PGD and PGA gradient attackers. Caches the linear-
+    non-edges, reused by the PGA gradient attacker. Caches the linear-
     layer weights and a candidate-free sparse edge set."""
 
     def __init__(self, cfg, system_config, data, retriever=None, **kwargs):

@@ -1,6 +1,0 @@
-name: submod_demote
-type: setselect_addedge
-trials: 1
-query_radius: ""
-prop_k: 2
-cand_topM: 256

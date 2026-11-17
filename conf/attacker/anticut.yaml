@@ -1,6 +1,0 @@
-name: anticut
-type: analytic2_addedge
-trials: 1
-query_radius: ""
-prop_k: 2
-n_clusters: 32
